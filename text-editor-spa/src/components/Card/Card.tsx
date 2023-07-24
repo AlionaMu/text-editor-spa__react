@@ -5,12 +5,10 @@ import { NoteService } from "../../services/NoteService";
 import { CardPropsType } from "../../types";
 import CardTagsList from "../CardTagsList/CardTagsList";
 import {
-  // addTags,
   editNote,
   remove,
   setTags,
   setTagsAmount,
-  // setTagsAmount,
   toggleEditMode,
 } from "../../store/notesListSlice";
 import "./Card.scss";

@@ -6,9 +6,12 @@ import { t } from "i18next";
 export const CardsList = (props: CardsListPropsType) => {
   const res = props.filter.length
     ? props.list.filter((item: Note) =>
-        item.tags.includes(props.filter) ? item : 0
+        props.filter.every((value: string) =>
+          item.tags.includes(value) ? item : 0
+        )
       )
     : props.list;
+
   return (
     <section className="cards-list">
       {res ? (

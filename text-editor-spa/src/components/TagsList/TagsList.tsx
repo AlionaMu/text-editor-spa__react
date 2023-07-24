@@ -2,18 +2,22 @@ import "./TagsList.scss";
 import { styled } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
 import { Tag, TagsListPropsType } from "../../types";
+import { resetTags, setSelectedTags } from "../../store/notesListSlice";
+import { useDispatch } from "react-redux";
 
 const ListItem = styled("li")(({ theme }) => ({
   margin: theme.spacing(0.5),
 }));
 
 export default function TagsList(props: TagsListPropsType) {
-  const clickHandler = (data: string) => {
-    props.setFilter(data);
+  const dispatch = useDispatch();
+
+  const clickHandler = (data: Tag) => {
+    dispatch(setSelectedTags(data));
   };
 
   const resetFilter = () => {
-    props.setFilter("");
+    dispatch(resetTags());
   };
 
   return (
@@ -27,10 +31,10 @@ export default function TagsList(props: TagsListPropsType) {
             return (
               <ListItem key={(Date.now() + Math.random()).toString()}>
                 <Chip
-                  color="success"
+                  color={data.isSelected ? "warning" : "success"}
                   icon={icon}
                   label={data.tag + " " + data.sum}
-                  onClick={() => clickHandler(data.tag)}
+                  onClick={() => clickHandler(data)}
                 />
               </ListItem>
             );

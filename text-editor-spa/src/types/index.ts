@@ -41,11 +41,11 @@ export type Note = {
 export type Tag = {
   tag: string;
   sum: number;
+  isSelected: boolean;
 };
 
 export type TagsListPropsType = {
   items: Tag[];
-  setFilter: Dispatch<SetStateAction<string>>;
   t: TFunction<"translation", undefined>;
 };
 
@@ -54,7 +54,7 @@ export type CardTagsListPropsType = {
 };
 
 export type CardsListPropsType = {
-  filter: string;
+  filter: string[];
   t: TFunction<"translation", undefined>;
   list: Note[];
 };

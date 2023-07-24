@@ -7,12 +7,13 @@ import { Note } from "../types";
 const arr: Note[] = [];
 const tagsArr: string[] = [];
 const tagsAmountArr: Tag[] = [];
+const selectedTagsArr: string[] = [];
 
 const initialState = {
   notesList: arr,
   tags: tagsArr,
   tagsAmount: tagsAmountArr,
-  filter: arr,
+  selectedTags: selectedTagsArr,
 };
 
 export const notesListSlice = createSlice({
@@ -51,6 +52,7 @@ export const notesListSlice = createSlice({
         const newTag: Tag = {
           tag: item,
           sum: count,
+          isSelected: false,
         };
         state.tagsAmount.push(newTag);
       });
@@ -59,6 +61,24 @@ export const notesListSlice = createSlice({
       const tagsArr: string[] = [];
       state.notesList.forEach((item) => tagsArr.push(...item.tags));
       state.tags = TagService.setUniqueList(tagsArr);
+    },
+    setSelectedTags: (state, action: PayloadAction<Tag>) => {
+      state.tagsAmount.forEach((item: Tag) => {
+        if (item.tag === action.payload.tag) {
+          item.isSelected = !item.isSelected;
+          if (item.isSelected) {
+            state.selectedTags.push(action.payload.tag);
+          } else {
+            const index = state.selectedTags.findIndex(
+              (itemTag: string) => itemTag === item.tag
+            );
+            state.selectedTags.splice(index, 1);
+          }
+        }
+      });
+    },
+    resetTags: (state) => {
+      state.tagsAmount.forEach((item: Tag) => (item.isSelected = false));
     },
   },
 });
@@ -71,6 +91,8 @@ export const {
   deleteTag,
   setTagsAmount,
   setTags,
+  setSelectedTags,
+  resetTags,
 } = notesListSlice.actions;
 
 export default notesListSlice.reducer;

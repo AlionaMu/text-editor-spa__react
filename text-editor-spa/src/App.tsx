@@ -24,10 +24,7 @@ function App() {
     i18n.changeLanguage(language);
   };
 
-  const [filter, setFilter] = useState("");
-
   const state = useSelector((state: RootState) => state.notesList);
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <div className={`theme-${theme}`}>
@@ -36,13 +33,13 @@ function App() {
           <main className="main">
             <section className="container">
               <Form t={t}></Form>
-              <TagsList
-                items={state.tagsAmount}
-                setFilter={setFilter}
-                t={t}
-              ></TagsList>
+              <TagsList items={state.tagsAmount} t={t}></TagsList>
             </section>
-            <CardsList filter={filter} list={state.notesList} t={t}></CardsList>
+            <CardsList
+              filter={state.selectedTags}
+              list={state.notesList}
+              t={t}
+            ></CardsList>
           </main>
           <Footer></Footer>
         </div>
