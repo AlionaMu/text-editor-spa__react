@@ -1,0 +1,15 @@
+@import "../../assets/theme-variables.scss";
+
+.tags-list_card {
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  margin: 10px 5px;
+  border-radius: 9px;
+  flex-wrap: wrap;
+  list-style: none;
+  @include themify($themes) {
+    background: themed("note-color");
+  }
+}

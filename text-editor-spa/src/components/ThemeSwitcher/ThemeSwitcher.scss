@@ -1,0 +1,11 @@
+.theme-switcher__wrapper {
+  display: flex;
+
+  &__line {
+    padding: 10px 0;
+  }
+}
+
+.theme-switcher__wrapper > * {
+  margin: 3px;
+}
