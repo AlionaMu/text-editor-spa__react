@@ -2,7 +2,11 @@ import "./TagsList.scss";
 import { styled } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
 import { Tag, TagsListPropsType } from "../../types";
-import { resetTags, setSelectedTags } from "../../store/notesListSlice";
+import {
+  deleteTag,
+  resetTags,
+  setSelectedTags,
+} from "../../store/notesListSlice";
 import { useDispatch } from "react-redux";
 
 const ListItem = styled("li")(({ theme }) => ({
@@ -14,6 +18,10 @@ export default function TagsList(props: TagsListPropsType) {
 
   const clickHandler = (data: Tag) => {
     dispatch(setSelectedTags(data));
+  };
+
+  const handleDelete = (data: Tag) => {
+    dispatch(deleteTag(data.tag));
   };
 
   const resetFilter = () => {
@@ -35,6 +43,7 @@ export default function TagsList(props: TagsListPropsType) {
                   icon={icon}
                   label={data.tag + " " + data.sum}
                   onClick={() => clickHandler(data)}
+                  onDelete={() => handleDelete(data)}
                 />
               </ListItem>
             );

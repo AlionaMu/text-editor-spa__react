@@ -1,5 +1,4 @@
 import { TFunction } from "i18next";
-import { Dispatch, SetStateAction } from "react";
 
 export enum LangEnum {
   en = "EN",

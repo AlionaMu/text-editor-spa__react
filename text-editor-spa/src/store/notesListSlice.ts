@@ -38,7 +38,9 @@ export const notesListSlice = createSlice({
       state.notesList[index].tags = action.payload.tags;
     },
     deleteTag: (state, action: PayloadAction<string>) => {
-      state.tags = state.tags.filter((item: string) => item !== action.payload);
+      state.tagsAmount = state.tagsAmount.filter(
+        (item: Tag) => item.tag !== action.payload
+      );
     },
     setTagsAmount: (state) => {
       const tagsArr: string[] = [];
