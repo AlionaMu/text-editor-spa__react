@@ -1,0 +1,30 @@
+@import "../../assets/theme-variables.scss";
+
+.tags-list__wrapper {
+  @include themify($themes) {
+    background: themed("bg-color");
+  }
+  padding: 10px;
+  border-radius: 9px;
+}
+
+.tags-list__title {
+  font-weight: 800;
+  align-self: flex-start;
+  padding-left: 24px;
+}
+
+.tags-list {
+  display: flex;
+  width: 270px;
+  justify-content: space-around;
+  margin: 10px 5px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.tags-list__button {
+  height: 30px;
+  margin: 5px;
+  padding: 5px 10px;
+}

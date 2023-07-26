@@ -1,0 +1,40 @@
+@import "../../assets/theme-variables.scss";
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: space-around;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 9px;
+  box-shadow: 0px 3px 5px rgb(0 0 0 / 20%), 0px 1px 18px rgb(0 0 0 / 12%),
+    0px 6px 10px rgb(0 0 0 / 14%);
+  @include themify($themes) {
+    background: themed("note-color");
+  }
+
+  &__title {
+    word-break: break-word;
+    font-weight: 600;
+  }
+
+  &__tag {
+    height: 8px;
+    margin: 5px;
+    font-size: 10px;
+  }
+
+  &__button {
+    width: 90px;
+    height: 25px;
+    @include themify($themes) {
+      background: themed("button-color");
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: space-around;
+  }
+}

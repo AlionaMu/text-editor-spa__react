@@ -1,0 +1,20 @@
+{
+  "header": {
+    "title": "Text editor"
+  },
+  "form": {
+    "title": "New note",
+    "placeholder": "Enter text",
+    "button": "Submit",
+    "error": "Note is required"
+  },
+  "tagsList": {
+    "title": "Tags",
+    "button": "Reset filter"
+  },
+  "note": {
+    "edit": "edit",
+    "delete": "delete",
+    "save": "save"
+  }
+}
